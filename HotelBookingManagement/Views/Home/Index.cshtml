@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Hotel Booking Management System</h1>
+    <p>Manage rooms, customers, and bookings efficiently with our system.</p>
+
+    <div>
+        <a class="btn btn-primary" asp-controller="Room" asp-action="Index">View Rooms</a>
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="Index">View Customers</a>
+        <a class="btn btn-primary" asp-controller="Booking" asp-action="Index">View Bookings</a>
+    </div>
+</div>
