@@ -97,11 +97,16 @@ public class BookingController : Controller
         return View(booking);
     }
 
-    [HttpPost, ActionName("Delete")]
+    [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        await _bookingService.DeleteBooking(id);
+        var booking = await _bookingService.GetBookingById(id);
+        if (booking != null)
+        {
+            await _bookingService.DeleteBooking(id);
+        }
         return RedirectToAction(nameof(Index));
     }
+
 }

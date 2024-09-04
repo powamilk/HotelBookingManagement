@@ -85,12 +85,17 @@ namespace HotelBookingManagement.Controllers
             return View(customer);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _customerService.DeleteCustomer(id);
+            var customer = await _customerService.GetCustomerById(id);
+            if (customer != null)
+            {
+                await _customerService.DeleteCustomer(id);
+            }
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
